@@ -1,0 +1,32 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --card: #0d1b2d;
+  --line: rgba(255,255,255,.1);
+  --text: #eef5ff;
+  --muted: #9fb0c5;
+  --accent: #2dd4bf;
+  --danger: #fb7185;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: radial-gradient(circle at top, #143156, var(--bg)); color: var(--text); }
+main { width: min(1100px, 94vw); margin: 24px auto; }
+.card { background: rgba(13,27,45,.92); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.22); }
+.header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+h1 { margin: 0; font-size: 24px; }
+p { color: var(--muted); }
+input, select { width: 100%; padding: 12px; margin: 6px 0 12px; border: 1px solid var(--line); border-radius: 12px; background: #071827; color: var(--text); }
+button { border: 0; border-radius: 12px; padding: 11px 14px; background: var(--accent); color: #04201c; font-weight: 700; cursor: pointer; }
+button.secondary { background: #22364e; color: var(--text); }
+button.danger { background: var(--danger); color: white; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.row { display: grid; grid-template-columns: 1fr 1fr 90px 90px 100px 170px 120px; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.row.head { color: var(--muted); font-size: 12px; text-transform: uppercase; }
+.badge { display: inline-block; padding: 6px 8px; border-radius: 999px; background: #1f3350; color: #dbeafe; text-align: center; font-size: 12px; }
+.ok { background: rgba(45,212,191,.18); color: #99f6e4; }
+.no { background: rgba(251,113,133,.18); color: #fecdd3; }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.notice { padding: 10px 12px; border-radius: 12px; background: rgba(45,212,191,.12); color: #ccfbf1; margin-bottom: 12px; }
+.err { background: rgba(251,113,133,.14); color: #fecdd3; }
+@media (max-width: 850px) { .grid { grid-template-columns: 1fr; } .row { grid-template-columns: 1fr; border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-bottom: 10px; } .row.head { display: none; } }
