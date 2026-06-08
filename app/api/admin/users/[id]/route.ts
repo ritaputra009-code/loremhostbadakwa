@@ -20,7 +20,7 @@ export async function PATCH(req: Request, { params }: Params) {
   if (body.durationDays !== undefined) update.duration_days = Number(body.durationDays || 30);
   if (body.expiresAt !== undefined) update.expires_at = body.expiresAt ? new Date(body.expiresAt).toISOString() : null;
 
-  const { data, error } = await supabaseAdmin()
+  const { data, error } = await supabaseAdmin
     .from("app_users")
     .update(update)
     .eq("id", id)
@@ -34,7 +34,7 @@ export async function PATCH(req: Request, { params }: Params) {
 export async function DELETE(_req: Request, { params }: Params) {
   if (!(await isAdmin())) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   const { id } = await params;
-  const { error } = await supabaseAdmin().from("app_users").delete().eq("id", id);
+  const { error } = await supabaseAdmin.from("app_users").delete().eq("id", id);
   if (error) return NextResponse.json({ message: error.message }, { status: 500 });
   return NextResponse.json({ ok: true });
 }
