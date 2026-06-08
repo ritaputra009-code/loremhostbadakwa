@@ -1,17 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 
-export function supabaseAdmin() {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseUrl =
+  process.env.SUPABASE_URL || "https://example.supabase.co";
 
-  if (!url || !key) {
-    throw new Error("SUPABASE_URL atau SUPABASE_SERVICE_ROLE_KEY belum diisi di Environment Variables Vercel.");
-  }
+const supabaseKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY || "dummy-service-role-key";
 
-  return createClient(url, key, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false
-    }
-  });
-}
+export const supabaseAdmin = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false,
+    autoRefreshToken: false,
+  },
+});
